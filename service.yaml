@@ -1,0 +1,14 @@
+# Service de l'application — À POUSSER DANS TON DÉPÔT GITHUB (avec deployment.yaml).
+# Permet d'atteindre l'app (port 8888) via un port-forward depuis l'hôte.
+apiVersion: v1
+kind: Service
+metadata:
+  name: playground
+  labels:
+    app: playground
+spec:
+  selector:
+    app: playground
+  ports:
+    - port: 8888
+      targetPort: 8888

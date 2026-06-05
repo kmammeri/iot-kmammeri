@@ -1,0 +1,24 @@
+# Manifest de l'application — À POUSSER DANS TON DÉPÔT GITHUB (pas appliqué en local).
+# Argo CD lit ce fichier depuis GitHub et le déploie dans le namespace dev.
+# La démo GitOps consiste à changer le tag v1 -> v2 ici, puis git push.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: playground
+  labels:
+    app: playground
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: playground
+  template:
+    metadata:
+      labels:
+        app: playground
+    spec:
+      containers:
+        - name: playground
+          image: wil42/playground:v1
+          ports:
+            - containerPort: 8888
